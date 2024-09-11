@@ -639,8 +639,8 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
     Engine HelicopterEngine "{51FAED9EF37A2D2B}" {
      RPMMax 19500
      RPMIdle 15000
-     StartUpTime 1
-     ShutdownTime 15
+     StartUpTime 25
+     ShutdownTime 20
      TwinEngine 1
     }
     Hull HelicopterHull "{51FAED9EF37A2D2D}" {
@@ -865,6 +865,7 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
    }
    shouldHandleObstruction 0
    AttachType InventoryStorageSlot RocketPod {
+    DisablePhysicsInteraction 1
    }
    WeaponTemplate "{EE7028E9DF49763A}Prefabs/Weapons/Core/Handgun_Base.et"
   }
@@ -876,7 +877,7 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
    AttachType InventoryStorageSlot RocketPod {
     PivotID "pylon_03"
     Angles 0 180 0
-    MergePhysics 1
+    DisablePhysicsInteraction 1
    }
    WeaponTemplate "{CF753E764D269489}Prefabs/Weapons/RocketPods/VehicleLauncher_B8V20A.et"
    WeaponSlotIndex 1
@@ -889,7 +890,7 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
    AttachType InventoryStorageSlot "{616009C81E15F852}" {
     PivotID "pylon_02"
     Angles 0 180 0
-    MergePhysics 1
+    DisablePhysicsInteraction 1
    }
    WeaponTemplate "{CF753E764D269489}Prefabs/Weapons/RocketPods/VehicleLauncher_B8V20A.et"
    WeaponSlotIndex 2
