@@ -240,6 +240,7 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
    }
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
      CompartmentAction SCR_GetInUserAction "{5086DB209BDE8253}" {
       ParentContextList {
        "door_02"
@@ -270,6 +271,7 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
      PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
       PivotID "pilot_idle"
      }
+     SkipCharacterDoorAnimationsFromSeat 1
      SeatType 1
      DoorInfoList {
       0
@@ -813,6 +815,38 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
     }
    }
   }
+  WCS_Armament_AircraftInfraredEmitterComponent "{62B0B51C741777DC}" {
+   m_vPosition 0 2.147 -2.882
+  }
+  WCS_Armament_DispenserManagerComponent "{62E0400556351BA3}" {
+  }
+  WCS_Armament_LoadoutComponent "{62E0372285D281E7}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{62E03722FA806AE1}" {
+     prefab "{77BFDD5F139D84D5}Prefabs/Weapons/AircraftWeapons/RocketPods/Pod_B8V20A.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{6154C601E3F07C0F}" {
+       Position PointInfo "{6154C601FC23FC01}" {
+        PivotID "pylon_02"
+        Offset 0 -0.3 0.0533
+        Angles 0 180 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{6154C601E3368D28}" {
+       Position PointInfo "{6154C601FD423397}" {
+        PivotID "pylon_03"
+        Offset 0 -0.3 0.0533
+        Angles 0 180 0
+       }
+      }
+     }
+     alternate 1
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{62E03722BEE63C71}" {
+   m_vCameraPosition 0 2.788 1.932
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     EntitySlotInfo ShadowAO {
@@ -841,12 +875,27 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
      Prefab "{F84B8A18FCA1CDD0}Prefabs/Vehicles/Helicopters/MI28/VehParts/Turret/MI28_Turret.et"
      RegisterActions 1
      RegisterDamage 1
+     RegisterControllers 1
      RegisterCompartments 1
     }
     RegisteringComponentSlotInfo Window_01 {
      Prefab "{EB35E4E8A6497D50}Prefabs/Vehicles/Helicopters/MI28/Dst/Mi28_window_01.et"
      DeactivatePhysicsOnAtaching 1
      RegisterDamage 1
+    }
+    WCS_Armament_DispenserSlotInfo Flares_L {
+     Offset -2.639 1.9493 -0.2899
+     Angles 0 -90 0
+     MergePhysics 1
+     Prefab "{965A4B9E952DD752}Prefabs/Weapons/Countermeasures/Dispenser_Flare_Cobra.et"
+     DisablePhysicsInteraction 1
+    }
+    WCS_Armament_DispenserSlotInfo Flares_R {
+     Offset 2.639 1.9493 -0.2899
+     Angles 0 90 0
+     MergePhysics 1
+     Prefab "{965A4B9E952DD752}Prefabs/Weapons/Countermeasures/Dispenser_Flare_Cobra.et"
+     DisablePhysicsInteraction 1
     }
    }
    SlotMappers {
@@ -858,42 +907,6 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
      }
     }
    }
-  }
-  WeaponSlotComponent "{60BA9678C720F0FB}" {
-   SignalsSourceAccess SignalsSourceAccessClass "{60BA9678C7215C31}" {
-    signalsSuffix "Helicopter"
-   }
-   shouldHandleObstruction 0
-   AttachType InventoryStorageSlot RocketPod {
-    DisablePhysicsInteraction 1
-   }
-   WeaponTemplate "{EE7028E9DF49763A}Prefabs/Weapons/Core/Handgun_Base.et"
-  }
-  WeaponSlotComponent "{60BA9678C720F0FD}" {
-   SignalsSourceAccess SignalsSourceAccessClass "{60BA9678C720F0FF}" {
-    signalsSuffix "Helicopter"
-   }
-   shouldHandleObstruction 0
-   AttachType InventoryStorageSlot RocketPod {
-    PivotID "pylon_03"
-    Angles 0 180 0
-    DisablePhysicsInteraction 1
-   }
-   WeaponTemplate "{CF753E764D269489}Prefabs/Weapons/RocketPods/VehicleLauncher_B8V20A.et"
-   WeaponSlotIndex 1
-  }
-  WeaponSlotComponent "{616009C89D193264}" {
-   SignalsSourceAccess SignalsSourceAccessClass "{616009C9E2B2B162}" {
-    signalsSuffix "Helicopter"
-   }
-   shouldHandleObstruction 0
-   AttachType InventoryStorageSlot "{616009C81E15F852}" {
-    PivotID "pylon_02"
-    Angles 0 180 0
-    DisablePhysicsInteraction 1
-   }
-   WeaponTemplate "{CF753E764D269489}Prefabs/Weapons/RocketPods/VehicleLauncher_B8V20A.et"
-   WeaponSlotIndex 2
   }
   ActionsManagerComponent "{C97BE5489221AE18}" {
    ActionContexts {

@@ -8,12 +8,10 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    TurretReloadPosition 0 0
    ReturnToPositionBeforeReload 0
   }
-  SoundComponent "{60BA967AA9D32313}" {
+  WeaponSoundComponent "{60BA967AA9D32313}" {
    Filenames {
     "{2964C2E313D7FC9C}Sounds/Vehicles/Wheeled/BTR70/Vehicles_BTR70_Turret_LP.acp" "{4AF770EF76013B62}Sounds/Vehicles/Wheeled/BTR70/Vehicles_BTR70_Turret.acp"
    }
-  }
-  BaconTankStuff_TurretStabilizationComponent "{60BA967AA9D32317}" {
   }
   MeshObject "{51ACD09C4E0B7D16}" {
    Object "{BF6348B87ED02B8B}Assets/Vehicles/Helicopters/Mi28/VehParts/Turret/MI28_turret.xob"
@@ -56,6 +54,7 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    }
    CompartmentSlots {
     TurretCompartmentSlot TurretCompartment {
+     CompartmentUniqueName "copilot"
      CompartmentAction SCR_GetInUserAction "{5086CC2CFDD3A05A}" {
       ParentContextList {
        "door_01"
@@ -81,6 +80,7 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
      PassengerPositionInfo EntitySlotInfo "{B1CB25848A3D93A8}" {
       PivotID "copilot_idle"
      }
+     SkipCharacterDoorAnimationsFromSeat 1
      SeatType 0
      DoorInfoList {
       0
@@ -213,28 +213,48 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    BaseAcceleration 120
    BaseDeceleration 200
   }
+  WCS_Armament_LoadoutComponent "{62E04005E02ECFE9}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{62E04004235B1CA5}" {
+    }
+    WCS_ArmamentWeaponGroup "{62E040042880778B}" {
+     fireIntervalMS 2500
+     prefab "{2D5CC02F208B40F3}Prefabs/Weapons/AircraftWeapons/MissilePods/Pod_9M120.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{62AEF3336BB44C7C}" {
+       Position PointInfo "{62AEF3336BB44C7D}" {
+        PivotID "pylon_01"
+        Offset 0 0 0.0533
+        Angles 0 180 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{62AEF3336BB44C79}" {
+       Position PointInfo "{62AEF3336BB44C7A}" {
+        PivotID "pylon_04"
+        Offset 0 0 0.0533
+        Angles 0 180 0
+       }
+      }
+     }
+     alternate 1
+    }
+   }
+   m_sPilotCompartmentUniqueName "copilot"
+  }
+  WCS_Armament_TurretStabilizationComponent "{62E04005813FC589}" {
+   m_fHorizontalStabilizationSpeed 360
+   m_fVerticalStabilizationSpeed 360
+   m_bStabilizationEnabled 1
+  }
+  WCS_Armament_VehicleWeaponStationComponent "{62E04005E592A3DF}" {
+  }
   WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
    shouldHandleObstruction 0
    AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
     Offset -0.0355 -0.0195 0.1739
-    DisablePhysicsInteraction 1
+    MergePhysics 1
    }
    WeaponTemplate "{292E1D387F454BE1}Prefabs/Weapons/HeavyWeapons/HMG_2A42_HE.et"
-  }
-  WeaponSlotComponent "{60BA967AA9D2ED88}" {
-   SignalsSourceAccess SignalsSourceAccessClass "{60BA967AA9D29210}" {
-    signalsSuffix "Turret"
-   }
-   useAimingType MainTurret
-   shouldHandleObstruction 0
-   AttachType InventoryStorageSlot Missile {
-    PivotID "v_gun_01"
-    Offset -0.0355 -0.0195 0.1739
-    Angles 0 0 0
-    DisablePhysicsInteraction 1
-   }
-   WeaponTemplate "{41B569D2E017D4DB}Prefabs/Weapons/HeavyWeapons/HMG_2A42_AP.et"
-   WeaponSlotIndex 1
   }
   WeaponSlotComponent "{60BA967AA9D2ED8B}" {
    SignalsSourceAccess SignalsSourceAccessClass "{60BA967AA9D2ED8A}" {
@@ -247,24 +267,8 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
     Angles 0 180 0
     DisablePhysicsInteraction 1
    }
-   WeaponTemplate "{FFEC7CBBDA59E0C3}Prefabs/Weapons/RocketPods/VehicleLauncher_9M120.et"
-   WeaponSlotIndex 2
-  }
-  WeaponSlotComponent "{61F0EB15AC94CD75}" {
-   SignalsSourceAccess SignalsSourceAccessClass "{61F0EB15A63C6D34}" {
-    signalsSuffix "Turret"
-   }
-   useAimingType MainTurret
-   shouldHandleObstruction 0
-   obstructionTestCharacterOffset 0 0 0
-   obstructionTestAddedLength 0
-   AttachType InventoryStorageSlot "{61F0EB15A24B2D53}" {
-    PivotID "pylon_04"
-    Angles 0 180 0
-    DisablePhysicsInteraction 1
-   }
-   WeaponTemplate "{FFEC7CBBDA59E0C3}Prefabs/Weapons/RocketPods/VehicleLauncher_9M120.et"
-   WeaponSlotIndex 3
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 1
   }
   SCR_TurretInventoryStorageManagerComponent "{60BA967AA9D2920D}" {
    Enabled 0
