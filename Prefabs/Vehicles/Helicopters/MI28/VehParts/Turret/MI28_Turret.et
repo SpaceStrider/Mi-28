@@ -147,12 +147,6 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    m_fPitchFactor 0.1
    m_fAngleFirstPerson 10
   }
-  SPC_WeaponRecoilComponent "{60BA967AA9D3232B}" {
-   m_fImpulse 110
-   m_vRecoilPosition PointInfo "{60BA967AA9D3232C}" {
-    PivotID "v_gun_01"
-   }
-  }
   TurretComponent "{60BA967AA9D3232E}" {
    components {
     SCR_2DSightsComponent "{60BA967AA9D32350}" {
@@ -217,9 +211,11 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    m_ArmamentGroups {
     WCS_ArmamentSlotGroup "{62E04004235B1CA5}" {
     }
+    WCS_ArmamentSlotGroup "{6319672D9AEC0F35}" {
+     slotIndex 1
+    }
     WCS_ArmamentWeaponGroup "{62E040042880778B}" {
-     fireIntervalMS 2500
-     prefab "{2D5CC02F208B40F3}Prefabs/Weapons/AircraftWeapons/MissilePods/Pod_9M120.et"
+     prefab "{2D5CC02F208B40F4}Prefabs/Weapons/AircraftWeapons/MissilePods/Pod_9M120.et"
      weaponsInfo {
       WCS_ArmamentWeaponInfo "{62AEF3336BB44C7C}" {
        Position PointInfo "{62AEF3336BB44C7D}" {
@@ -236,7 +232,10 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
        }
       }
      }
-     alternate 1
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{6319672D88E33FD8}" {
+      }
+     }
     }
    }
    m_sPilotCompartmentUniqueName "copilot"
@@ -263,12 +262,25 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    useAimingType MainTurret
    shouldHandleObstruction 0
    AttachType InventoryStorageSlot Missile {
-    PivotID "pylon_01"
-    Angles 0 180 0
-    DisablePhysicsInteraction 1
+    PivotID "v_gun_01"
+    Offset -0.0355 -0.0195 0.1739
+    Angles 0 0 0
+    MergePhysics 1
+    DisablePhysicsInteraction 0
+   }
+   WeaponTemplate "{41B569D2E017D4DB}Prefabs/Weapons/HeavyWeapons/HMG_2A42_AP.et"
+   WeaponSlotIndex 1
+  }
+  WeaponSlotComponent "{6319672D48D80ADC}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{6319672DBFB0CFAE}" {
+    signalsSuffix "Turret"
+   }
+   useAimingType MainTurret
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot asd {
    }
    WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
-   WeaponSlotIndex 1
+   WeaponSlotIndex 2
   }
   SCR_TurretInventoryStorageManagerComponent "{60BA967AA9D2920D}" {
    Enabled 0
